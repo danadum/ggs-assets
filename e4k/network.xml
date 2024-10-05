@@ -39,7 +39,7 @@
             <countries>["ID","PH","PL"]</countries>
             <defaultcountry>default</defaultcountry>
         </instance>
-        <instance value="3">
+        <instance value="203">
             <server>e4k-live-preclient-pl1-game.goodgamestudios.com</server>
             <port>80</port>
             <zone>EmpirefourkingdomsExGG2_3</zone>
