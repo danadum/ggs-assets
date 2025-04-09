@@ -450,6 +450,15 @@
                     "name": "dialog_ci_filter01_all"
                 }
             ]
+        },
+        "event_title_128": {
+            "id": 82,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
+                }
+            ]
         }
     },
     "alliance": {
