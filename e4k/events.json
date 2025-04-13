@@ -276,23 +276,28 @@
             ]
         },
         "dialog_longPointsEvent_seasonalPoints": {
-            "nopoints": true,
+            "global": true,
             "id": 53,
             "categories": [
                 {
                     "id": 1,
-                    "name": "level_placeholder",
-                    "value": "50-69"
+                    "name": "legendaryLevel_placeholder",
+                    "value": "1-199"
                 },
                 {
                     "id": 2,
                     "name": "legendaryLevel_placeholder",
-                    "value": "1-799"
+                    "value": "200-649"
                 },
                 {
                     "id": 3,
                     "name": "legendaryLevel_placeholder",
-                    "value": "800-950"
+                    "value": "650-949"
+                },
+                {
+                    "id": 4,
+                    "name": "legendaryLevel_placeholder",
+                    "value": "950"
                 }
             ]
         },
