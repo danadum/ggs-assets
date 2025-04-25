@@ -430,10 +430,11 @@
             ]
         },
         "eventBuilding_DonationEvent": {
+            "global": true,
             "id": 79,
             "categories": [
                 {
-                    "id": 1,
+                    "id": null,
                     "name": "dialog_ci_filter01_all"
                 }
             ]
