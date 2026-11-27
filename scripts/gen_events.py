@@ -345,6 +345,8 @@ def generate(dll, items, texts, game):
             cats = level_categories(leagues_for(items, eid, sub), top)
         if "KINGDOMS_LEAGUE" in name:
             entry["isLeague"] = True
+            # The server ignores LID here: LID 1 and 2 return the same rows and LR (EmpireEx_3, 2026-11-27).
+            cats = [{"id": 1, "name": "dialog_ci_filter01_all"}]
         if ev in NOPOINTS_EVENTS and side == "player":
             entry["nopoints"] = True
         entries.append((lt, side, key, entry, cats, eid))
