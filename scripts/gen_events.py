@@ -36,6 +36,11 @@ EXCLUDE = {
     "COLOSSUS": "read with che (C2SColossusGetHighscoreVO), not hgh",
     "KINGDOMS_LEAGUE_SEASON_EVENT": "season round rank, same title as the season list",
     "ALLIANCE_KINGDOMS_LEAGUE_SEASON_EVENT": "season round rank, same title as the season list",
+    "ALIEN_INVASION": "old solo alien invasion, no EVENTTYPE constant",
+    "ALLIANCE_DAIMYO": "daimyo alliance list, no EVENTTYPE constant, rows of another shape",
+    "NOMADINVASION": "old solo nomad invasion, no title in the translations",
+    "ALLIANCE_SAMURAI_ALIEN_INVASION_PLAYER": "E4K only, title only in the network-16 translations",
+    "ALLIANCE_SAMURAI_ALIEN_INVASION_ALLIANCE": "E4K only, title only in the network-16 translations",
 }
 # 4. Facts the files do not carry.
 NOPOINTS_EVENTS = {"EVENTTYPE_FACTION_INVASION"}
@@ -269,20 +274,23 @@ def generate(dll, items, texts, game):
         out[side][key] = entry
 
     # LT -> event links
-    links, unmapped = {}, []
+    links, unmapped, skipped = {}, [], []
     for lt, name in sorted(lts.items()):
         if lt in general_lts:
             continue
         ev = match_event(name, evconst)
         if ev is None:
-            unmapped.append((lt, name))
+            if name in EXCLUDE:
+                skipped.append((lt, name, None, "excluded: " + EXCLUDE[name]))
+            else:
+                unmapped.append((lt, name))
             continue
         links[lt] = (name, ev, evconst[ev])
     by_event = {}
     for lt, (name, ev, eid) in links.items():
         by_event.setdefault(eid, []).append(lt)
+    unpublished = ["LT %d %s: no EVENTTYPE constant matches its name (add a LINK line)" % u for u in unmapped]
 
-    skipped = []
     entries = []  # (sort LT, side, key, entry, eid)
     for lt, (name, ev, eid) in sorted(links.items()):
         side = side_of(name)
@@ -306,6 +314,7 @@ def generate(dll, items, texts, game):
                 key = alt
             else:
                 warnings.append("LT %d %s: no title key (tried event_title_%d, %s) - not published" % (lt, name, eid, alt))
+                unpublished.append("LT %d %s: no translation for event_title_%d nor %s" % (lt, name, eid, alt))
                 skipped.append((lt, name, ev, "no title key"))
                 continue
         entry = {}
@@ -398,7 +407,7 @@ def generate(dll, items, texts, game):
 
     for lt, name in unmapped:
         notes.append("LT %d %s: no event linked (not published)" % (lt, name))
-    return out, warnings, notes, skipped, links
+    return out, warnings, notes, skipped, links, unpublished
 
 
 def previous_check(prev, new, items, dll, links):
@@ -434,6 +443,7 @@ def main():
     ap.add_argument("--texts", default=TRANSLATIONS, help="translations JSON of network 12 (path or URL)")
     ap.add_argument("--previous", help="currently published events.json (path or URL): fail if a list disappears")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--report", help="file listing the new lists the script could not publish (empty if none)")
     a = ap.parse_args()
     try:
         dll_src, items_src = a.dll, a.items
@@ -452,7 +462,7 @@ def main():
         texts = json.loads(fetch(a.texts))
         if len(texts) < 1000:
             raise Fatal("translations: only %d keys" % len(texts))
-        out, warnings, notes, skipped, links = generate(dll, items, texts, a.game)
+        out, warnings, notes, skipped, links, unpublished = generate(dll, items, texts, a.game)
         if a.previous:
             gone, dropped = previous_check(json.loads(fetch(a.previous)), out, items, dll, links)
             if gone:
@@ -461,6 +471,9 @@ def main():
     except Fatal as e:
         print("FATAL:", e, file=sys.stderr)
         return 1
+    if a.report:
+        with open(a.report, "w", encoding="utf-8") as f:
+            f.write("".join("%s: %s\n" % (a.game, u) for u in unpublished))
     with open(a.out, "w", encoding="utf-8") as f:
         f.write(json.dumps(out, indent=4, ensure_ascii=False) + "\n")
     print("items version:", items["version"], file=sys.stderr)
