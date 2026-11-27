@@ -1,0 +1,42 @@
+name: Update events.json
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: events
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate GGE
+        run: python3 -I scripts/gen_events.py --game gge --previous gge/events.json --out gge/events.json
+
+      - name: Generate E4K
+        if: always()
+        run: python3 -I scripts/gen_events.py --game e4k --previous e4k/events.json --out e4k/events.json
+
+      - name: Commit
+        if: always()
+        run: |
+          if git diff --quiet -- gge/events.json e4k/events.json; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "update events.json from the game files" -- gge/events.json e4k/events.json
+          git push
+
+      # GitHub disables a scheduled workflow after 60 days without repository activity.
+      - name: Keep the schedule enabled
+        if: always() && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/events.yaml/enable"
