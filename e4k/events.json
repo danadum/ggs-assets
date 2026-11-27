@@ -21,7 +21,7 @@
                 {
                     "id": 4,
                     "name": "level_placeholder",
-                    "value": "40-59"
+                    "value": "40-49"
                 },
                 {
                     "id": 5,
@@ -65,7 +65,7 @@
                 {
                     "id": 4,
                     "name": "level_placeholder",
-                    "value": "40-59"
+                    "value": "40-49"
                 },
                 {
                     "id": 5,
@@ -100,7 +100,7 @@
                 {
                     "id": 4,
                     "name": "level_placeholder",
-                    "value": "40-59"
+                    "value": "40-49"
                 },
                 {
                     "id": 5,
@@ -121,6 +121,15 @@
                     "id": 6,
                     "name": "level_placeholder",
                     "value": "70"
+                }
+            ]
+        },
+        "event_title_24": {
+            "id": 20,
+            "categories": [
+                {
+                    "id": 6,
+                    "name": "dialog_ci_filter01_all"
                 }
             ]
         },
@@ -180,8 +189,62 @@
                 },
                 {
                     "id": 7,
-                    "name": "legendaryLevel_placeholder",
-                    "value": "1-950"
+                    "name": "level_placeholder",
+                    "value": "70"
+                }
+            ]
+        },
+        "event_title_62": {
+            "id": 41,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "level_placeholder",
+                    "value": "6-10"
+                },
+                {
+                    "id": 2,
+                    "name": "level_placeholder",
+                    "value": "11-15"
+                },
+                {
+                    "id": 3,
+                    "name": "level_placeholder",
+                    "value": "16-20"
+                },
+                {
+                    "id": 4,
+                    "name": "level_placeholder",
+                    "value": "21-30"
+                },
+                {
+                    "id": 5,
+                    "name": "level_placeholder",
+                    "value": "31-40"
+                },
+                {
+                    "id": 6,
+                    "name": "level_placeholder",
+                    "value": "41-50"
+                },
+                {
+                    "id": 7,
+                    "name": "level_placeholder",
+                    "value": "51-69"
+                },
+                {
+                    "id": 8,
+                    "name": "level_placeholder",
+                    "value": "70"
+                }
+            ]
+        },
+        "event_title_15": {
+            "id": 43,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
                 }
             ]
         },
@@ -221,7 +284,7 @@
                 {
                     "id": 1,
                     "name": "level_placeholder",
-                    "value": "30-69"
+                    "value": "10-69"
                 },
                 {
                     "id": 2,
@@ -355,25 +418,6 @@
                 }
             ]
         },
-        "event_title_601": {
-            "id": 63,
-            "isLeague": true,
-            "categories": [
-                {
-                    "id": 1,
-                    "name": "dialog_ci_filter01_all"
-                }
-            ]
-        },
-        "event_title_89": {
-            "id": 72,
-            "categories": [
-                {
-                    "id": 1,
-                    "name": "dialog_ci_filter01_all"
-                }
-            ]
-        },
         "temp_server_name": {
             "categories": [
                 {
@@ -388,6 +432,25 @@
                     "placeholder": ":",
                     "value": "",
                     "isCurrentOuter": true
+                }
+            ]
+        },
+        "event_title_601": {
+            "isLeague": true,
+            "id": 63,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
+                }
+            ]
+        },
+        "event_title_89": {
+            "id": 72,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
                 }
             ]
         },
@@ -455,8 +518,26 @@
                 }
             ]
         },
+        "event_title_132": {
+            "id": 86,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
+                }
+            ]
+        },
         "event_title_134": {
             "id": 87,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
+                }
+            ]
+        },
+        "event_title_135": {
+            "id": 88,
             "categories": [
                 {
                     "id": 1,
@@ -495,7 +576,16 @@
         },
         "cargo_points": {
             "id": 13,
-            "offset": 1,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "dialog_ci_filter01_all"
+                }
+            ],
+            "offset": 1
+        },
+        "event_title_36": {
+            "id": 21,
             "categories": [
                 {
                     "id": 1,
@@ -540,8 +630,8 @@
             ]
         },
         "event_title_601": {
-            "id": 67,
             "isLeague": true,
+            "id": 67,
             "categories": [
                 {
                     "id": 1,
@@ -555,6 +645,62 @@
                 {
                     "id": 1,
                     "name": "dialog_ci_filter01_all"
+                }
+            ]
+        },
+        "event_title_129": {
+            "global": true,
+            "id": 84,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "popup_ame_rewards_division_name_1"
+                },
+                {
+                    "id": 2,
+                    "name": "popup_ame_rewards_division_name_2"
+                },
+                {
+                    "id": 3,
+                    "name": "popup_ame_rewards_division_name_3"
+                },
+                {
+                    "id": 4,
+                    "name": "popup_ame_rewards_division_name_4"
+                },
+                {
+                    "id": 5,
+                    "name": "popup_ame_rewards_division_name_5"
+                }
+            ]
+        },
+        "event_title_133": {
+            "global": true,
+            "id": 89,
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "popup_arme_rewards_division_name_1"
+                },
+                {
+                    "id": 2,
+                    "name": "popup_arme_rewards_division_name_2"
+                },
+                {
+                    "id": 3,
+                    "name": "popup_arme_rewards_division_name_3"
+                },
+                {
+                    "id": 4,
+                    "name": "popup_arme_rewards_division_name_4"
+                },
+                {
+                    "id": 5,
+                    "name": "popup_arme_rewards_division_name_5"
+                },
+                {
+                    "id": 6,
+                    "name": "popup_arme_rewards_division_name_6"
                 }
             ]
         }
@@ -579,10 +725,6 @@
         [
             "event_title_80",
             "event_title_80"
-        ],
-        [
-            "event_title_85",
-            "event_title_85"
         ],
         [
             "dialog_redAlienInvasion_message_header",
